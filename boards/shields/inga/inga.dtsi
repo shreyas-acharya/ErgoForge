@@ -6,6 +6,14 @@
 
 #include "inga-layouts.dtsi"
 
+// Bypasses consumer drivers and forces the physical Blue LED pin low right at system boot
+&gpio0 {
+    blue_led_hog {
+        gpio-hog;
+        gpios = <26 GPIO_ACTIVE_LOW>;
+        output-low; 
+    };
+};
 / {
     chosen {
         zmk,physical-layout = &default_layout;
@@ -16,13 +24,6 @@
         compatible = "zmk,kscan-gpio-matrix";
         diode-direction = "col2row";
         wakeup-source;
-	col-gpios
-	    = <&xiao_d 0 GPIO_ACTIVE_HIGH>
-	    , <&xiao_d 1 GPIO_ACTIVE_HIGH>
-	    , <&xiao_d 2 GPIO_ACTIVE_HIGH>
-	    , <&xiao_d 3 GPIO_ACTIVE_HIGH>
-	    , <&xiao_d 4 GPIO_ACTIVE_HIGH>
-	    ;
         row-gpios
             = <&xiao_d 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
             , <&xiao_d 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
@@ -45,7 +46,7 @@
         // ├───────┼───────┼───────┼───────┼───────┤   ├───────┼───────┼───────┼───────┼───────┤ 
             RC(2,0) RC(2,1) RC(2,2) RC(2,3) RC(2,4)	RC(2,5) RC(2,6) RC(2,7) RC(2,8) RC(2,9)
         // └───────┴───────┴───────┼───────┼───────┤   ├───────┼───────┼───────┴───────┴───────┘
-                                    RC(3,0) RC(3,1)	RC(3,2) RC(3,3)                        
+                                    RC(3,3) RC(3,4)	RC(3,5) RC(3,6)                        
 	//                         └───────┴───────┘   └───────┴───────┘
         >;
     };
