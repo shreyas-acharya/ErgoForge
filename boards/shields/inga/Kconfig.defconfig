@@ -1,0 +1,16 @@
+if SHIELD_INGA_LEFT
+
+config ZMK_KEYBOARD_NAME
+    default "inga"
+
+config ZMK_SPLIT_ROLE_CENTRAL
+    default y
+
+endif # SHIELD_INGA_LEFT
+
+if SHIELD_INGA_LEFT || SHIELD_INGA_RIGHT
+
+config ZMK_SPLIT
+    default y
+
+endif # SHIELD_INGA_LEFT || SHIELD_INGA_RIGHT

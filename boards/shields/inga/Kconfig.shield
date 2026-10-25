@@ -1,0 +1,5 @@
+config SHIELD_INGA_LEFT
+    def_bool $(shields_list_contains,inga_left)
+
+config SHIELD_INGA_RIGHT
+    def_bool $(shields_list_contains,inga_right)

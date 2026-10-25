@@ -1,0 +1,31 @@
+// This file was generated from a template. Edit it to match your keyboard.
+// See https://zmk.dev/docs/development/hardware-integration/new-shield for more instructions.
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+
+// Macros
+/ {
+    keymap {
+        compatible = "zmk,keymap";
+
+	// Layer 0
+        default_layer {
+            bindings = <
+		// ┌───────┬───────┬───────┬───────┬───────┐   ┌───────┬───────┬───────┬───────┬───────┐  
+		// │   q   │   w   │   e   │   r   │   t   │   │   y   │   u   │   i   │   o   │   p   │
+		     &kp Q   &kp W   &kp E   &kp R   &kp T       &kp Y   &kp U   &kp I   &kp O   &kp P
+		// ├───────┼───────┼───────┼───────┼───────┤   ├───────┼───────┼───────┼───────┼───────┤ 
+		// │   a   │   s   │   d   │   f   │   g   │   │   h   │   j   │   k   │   l   │   ;   │
+		     &kp A   &kp S   &kp D   &kp F   &kp G       &kp H   &kp J   &kp K   &kp L   &kp SEMI
+		// ├───────┼───────┼───────┼───────┼───────┤   ├───────┼───────┼───────┼───────┼───────┤ 
+		// │   z   │   x   │   c   │   v   │   b   │   │   n   │   m   │   ,   │   .   │   /   │
+		     &kp Z   &kp X   &kp C   &kp V   &kp B       &kp N   &kp M   &kp COMMA &kp DOT &kp FSLH
+		// └───────┴───────┴───────┼───────┼───────┤   ├───────┼───────┼───────┴───────┴───────┘
+		//                         │  tab  │ enter │   │ space │ bksp  │                        
+		                            &kp TAB &kp RET    &kp SPACE &kp BSPC
+		//                         └───────┴───────┘   └───────┴───────┘
+            >;
+        };
+    };
+};
