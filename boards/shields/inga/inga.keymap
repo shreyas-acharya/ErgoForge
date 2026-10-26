@@ -22,8 +22,8 @@
 		// │   z   │   x   │   c   │   v   │   b   │   │   n   │   m   │   ,   │   .   │   /   │
 		     &kp Z   &kp X   &kp C   &kp V   &kp B       &kp N   &kp M   &kp COMMA &kp DOT &kp FSLH
 		// └───────┴───────┴───────┼───────┼───────┤   ├───────┼───────┼───────┴───────┴───────┘
-		//                         │  tab  │ enter │   │ space │ bksp  │                        
-		                            &kp TAB &kp RET    &kp SPACE &kp BSPC
+		//                         │  tab  │ space │   │ enter │ bksp  │                        
+		                            &kp TAB &kp SPACE   &kp RET &kp BSPC
 		//                         └───────┴───────┘   └───────┴───────┘
             >;
         };
