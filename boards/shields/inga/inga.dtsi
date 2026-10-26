@@ -6,14 +6,6 @@
 
 #include "inga-layouts.dtsi"
 
-// Bypasses consumer drivers and forces the physical Blue LED pin low right at system boot
-&gpio0 {
-    blue_led_hog {
-        gpio-hog;
-        gpios = <26 GPIO_ACTIVE_LOW>;
-        output-low; 
-    };
-};
 / {
     chosen {
         zmk,physical-layout = &default_layout;
