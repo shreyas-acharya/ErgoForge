@@ -41,49 +41,54 @@
     combos {
         compatible = "zmk,combos";
 	combo_esc_right {
-            timeout-ms = <50>;
+            timeout-ms = <100>;
 	    key-positions = <15 16>;
 	    bindings = <&kp ESC>;
 	};
 	combo_esc_left {
-            timeout-ms = <50>;
+            timeout-ms = <100>;
 	    key-positions = <13 14>;
 	    bindings = <&kp ESC>;
 	};
 	combo_battery {
-            timeout-ms = <50>;
+            timeout-ms = <100>;
 	    key-positions = <30 31>;
 	    bindings = <&ind_bat>;
 	};
 	combo_ctrl_left {
-            timeout-ms = <50>;
+            timeout-ms = <100>;
 	    key-positions = <12 13>;
 	    bindings = <&kp LCTRL>;
 	};
 	combo_ctrl_right {
-            timeout-ms = <50>;
+            timeout-ms = <100>;
 	    key-positions = <16 17>;
 	    bindings = <&kp RCTRL>;
 	};
 	combo_shift_left {
-            timeout-ms = <50>;
+            timeout-ms = <100>;
 	    key-positions = <11 12>;
 	    bindings = <&kp LSHFT>;
 	};
 	combo_shift_right {
-            timeout-ms = <50>;
+            timeout-ms = <100>;
 	    key-positions = <17 18>;
 	    bindings = <&kp RSHFT>;
 	};
 	combo_alt_left {
-            timeout-ms = <50>;
+            timeout-ms = <100>;
 	    key-positions = <10 11>;
 	    bindings = <&kp LALT>;
 	};
 	combo_alt_right {
-            timeout-ms = <50>;
+            timeout-ms = <100>;
 	    key-positions = <18 19>;
 	    bindings = <&kp RALT>;
+	};
+	combo_gui {
+            timeout-ms = <100>;
+	    key-positions = <31 32>;
+	    bindings = <&kp RGUI>;
 	};
     };
 
