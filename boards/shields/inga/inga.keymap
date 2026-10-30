@@ -42,12 +42,12 @@
         compatible = "zmk,combos";
 	combo_esc_right {
             timeout-ms = <100>;
-	    key-positions = <15 16>;
+	    key-positions = <6 7>;
 	    bindings = <&kp ESC>;
 	};
 	combo_esc_left {
             timeout-ms = <100>;
-	    key-positions = <13 14>;
+	    key-positions = <2 3>;
 	    bindings = <&kp ESC>;
 	};
 	combo_battery {
@@ -77,12 +77,12 @@
 	};
 	combo_alt_left {
             timeout-ms = <100>;
-	    key-positions = <10 11>;
+	    key-positions = <1 2>;
 	    bindings = <&kp LALT>;
 	};
 	combo_alt_right {
             timeout-ms = <100>;
-	    key-positions = <18 19>;
+	    key-positions = <7 8>;
 	    bindings = <&kp RALT>;
 	};
 	combo_gui {
