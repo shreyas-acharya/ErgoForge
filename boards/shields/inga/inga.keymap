@@ -40,20 +40,25 @@
 
     combos {
         compatible = "zmk,combos";
-	combo_esc_right {
+	combo_gui {
             timeout-ms = <100>;
-	    key-positions = <6 7>;
-	    bindings = <&kp ESC>;
-	};
-	combo_esc_left {
-            timeout-ms = <100>;
-	    key-positions = <2 3>;
-	    bindings = <&kp ESC>;
+	    key-positions = <31 32>;
+	    bindings = <&kp RGUI>;
 	};
 	combo_battery {
             timeout-ms = <100>;
 	    key-positions = <30 31>;
 	    bindings = <&ind_bat>;
+	};
+	combo_esc_left {
+            timeout-ms = <100>;
+	    key-positions = <22 23>;
+	    bindings = <&kp ESC>;
+	};
+	combo_esc_right {
+            timeout-ms = <100>;
+	    key-positions = <26 27>;
+	    bindings = <&kp ESC>;
 	};
 	combo_ctrl_left {
             timeout-ms = <100>;
@@ -77,18 +82,13 @@
 	};
 	combo_alt_left {
             timeout-ms = <100>;
-	    key-positions = <1 2>;
+	    key-positions = <21 22>;
 	    bindings = <&kp LALT>;
 	};
 	combo_alt_right {
             timeout-ms = <100>;
-	    key-positions = <7 8>;
+	    key-positions = <27 28>;
 	    bindings = <&kp RALT>;
-	};
-	combo_gui {
-            timeout-ms = <100>;
-	    key-positions = <31 32>;
-	    bindings = <&kp RGUI>;
 	};
     };
 
@@ -114,5 +114,25 @@
 		//                         └───────┴───────┘   └───────┴───────┘
             >;
         };
+	
+	// Layer 1 
+	num_layer {
+            bindings = <
+		// ┌───────┬───────┬───────┬───────┬───────┐   ┌───────┬───────┬───────┬───────┬───────┐  
+		// │   q   │   w   │   e   │   r   │   t   │   │   y   │   u   │   i   │   o   │   p   │
+		     &kp Q   &kp W   &kp E   &kp R   &kp T       &kp Y   &kp U   &kp I   &kp O   &kp P
+		// ├───────┼───────┼───────┼───────┼───────┤   ├───────┼───────┼───────┼───────┼───────┤ 
+		// │   a   │   s   │   d   │   f   │   g   │   │   h   │   j   │   k   │   l   │   ;   │
+		//  HRML(A,    S,      D,      F)    &kp G       &kp H  HRMR(J,    K,      L,   SEMI)
+		     &kp A   &kp S   &kp D   &kp F   &kp G       &kp H   &kp J   &kp K   &kp L &kp SEMI
+		// ├───────┼───────┼───────┼───────┼───────┤   ├───────┼───────┼───────┼───────┼───────┤ 
+		// │   z   │   x   │   c   │   v   │   b   │   │   n   │   m   │   ,   │   .   │   /   │
+		     &kp Z   &kp X   &kp C   &kp V   &kp B       &kp N   &kp M   &kp COMMA &kp DOT &kp FSLH
+		// └───────┴───────┴───────┼───────┼───────┤   ├───────┼───────┼───────┴───────┴───────┘
+		//                         │  tab  │ space │   │ enter │ bksp  │                        
+		                            &kp TAB &kp SPACE   &kp RET &kp BSPC
+		//                         └───────┴───────┘   └───────┴───────┘
+            >;
+	};
     };
 };
