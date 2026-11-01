@@ -1,0 +1,11 @@
+// Combos for battery indicator
+
+/ {
+combos {
+    combo_battery {
+        timeout-ms = <100>;
+	key-positions = <30 31>;
+	bindings = <&ind_bat>;
+    };
+};
+};

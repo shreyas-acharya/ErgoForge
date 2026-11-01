@@ -1,0 +1,71 @@
+// Combos for modifiers
+
+/ {
+combos {
+    combo_gui {
+        timeout-ms = <100>;
+        key-positions = <31 32>;
+        bindings = <&kp RGUI>;
+    };
+    combo_esc_left {
+        timeout-ms = <100>;
+	key-positions = <22 23>;
+	bindings = <&kp ESC>;
+    };
+    combo_esc_right {
+        timeout-ms = <100>;
+        key-positions = <26 27>;
+	bindings = <&kp ESC>;
+    };
+    combo_ctrl_left {
+        timeout-ms = <100>;
+        key-positions = <12 13>;
+	bindings = <&kp LCTRL>;
+    };
+    combo_ctrl_right {
+        timeout-ms = <100>;
+	key-positions = <16 17>;
+	bindings = <&kp RCTRL>;
+    };
+    combo_shift_left {
+        timeout-ms = <100>;
+	key-positions = <11 12>;
+	bindings = <&kp LSHFT>;
+    };
+    combo_shift_right {
+        timeout-ms = <100>;
+	key-positions = <17 18>;
+	bindings = <&kp RSHFT>;
+    };
+    combo_alt_left {
+        timeout-ms = <100>;
+	key-positions = <21 22>;
+	bindings = <&kp LALT>;
+    };
+    combo_alt_right {
+        timeout-ms = <100>;
+	key-positions = <27 28>;
+	bindings = <&kp RALT>;
+    };
+    combo_ctrl_shift_left {
+        timeout-ms = <100>;
+	key-positions = <11 12 13>;
+        bindings = <&kp LC(LSHFT)>;
+    };
+    combo_ctrl_shift_right {
+        timeout-ms = <100>;
+	key-positions = <16 17 18>;
+        bindings = <&kp RC(RSHFT)>;
+    };
+    combo_alt_shift_left {
+        timeout-ms = <100>;
+	key-positions = <11 22>;
+	bindings = <&kp LA(LSHFT)>;
+    };
+    combo_alt_shift_right {
+        timeout-ms = <100>;
+	key-positions = <18 27>;
+	bindings = <&kp RA(RSHFT)>;
+    };
+};
+};

@@ -4,6 +4,9 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <behaviors/rgbled_widget.dtsi>
+#include <dt-bindings/zmk/pointing.h>
+#include "combos/modifiers.dtsi"
+#include "combos/battery_indicator.dtsi"
 
 // Macros
 #define KEYS_L 0 1 2 3 4 10 11 12 13 14 20 21 22 23 24 30 31
@@ -14,98 +17,93 @@
 / {
     combos {
         compatible = "zmk,combos";
-	combo_gui {
-            timeout-ms = <100>;
-	    key-positions = <31 32>;
-	    bindings = <&kp RGUI>;
-	};
+	// Battery
 	combo_battery {
             timeout-ms = <100>;
 	    key-positions = <30 31>;
 	    bindings = <&ind_bat>;
-	};
-	combo_esc_left {
-            timeout-ms = <100>;
-	    key-positions = <22 23>;
-	    bindings = <&kp ESC>;
-	};
-	combo_esc_right {
-            timeout-ms = <100>;
-	    key-positions = <26 27>;
-	    bindings = <&kp ESC>;
-	};
-	combo_ctrl_left {
-            timeout-ms = <100>;
-	    key-positions = <12 13>;
-	    bindings = <&kp LCTRL>;
-	};
-	combo_ctrl_right {
-            timeout-ms = <100>;
-	    key-positions = <16 17>;
-	    bindings = <&kp RCTRL>;
-	};
-	combo_shift_left {
-            timeout-ms = <100>;
-	    key-positions = <11 12>;
-	    bindings = <&kp LSHFT>;
-	};
-	combo_shift_right {
-            timeout-ms = <100>;
-	    key-positions = <17 18>;
-	    bindings = <&kp RSHFT>;
-	};
-	combo_alt_left {
-            timeout-ms = <100>;
-	    key-positions = <21 22>;
-	    bindings = <&kp LALT>;
-	};
-	combo_alt_right {
-            timeout-ms = <100>;
-	    key-positions = <27 28>;
-	    bindings = <&kp RALT>;
 	};
     };
 
     keymap {
         compatible = "zmk,keymap";
 
-	// Layer 0
+	// Default layer
         default_layer {
             bindings = <
-		// ┌───────┬───────┬───────┬─────────┬─────────┐   ┌───────┬──────────┬─────────┬───────┬────────┐  
-		// │   q   │   w   │   e   │    r    │    t    │   │   y   │     u    │    i    │   o   │    p   │
-		     &kp Q   &kp W   &kp E    &kp R     &kp T        &kp Y     &kp U     &kp I    &kp O   &kp P
-		// ├───────┼───────┼───────┼─────────┼─────────┤   ├───────┼──────────┼─────────┼───────┼────────┤ 
-		// │   a   │   s   │   d   │    f    │    g    │   │   h   │     j    │    k    │   l   │    ;   │
-		     &kp A   &kp S   &kp D    &kp F     &kp G        &kp H     &kp J     &kp K    &kp L  &kp SEMI
-		// ├───────┼───────┼───────┼─────────┼─────────┤   ├───────┼──────────┼─────────┼───────┼────────┤ 
-		// │   z   │   x   │   c   │    v    │    b    │   │   n   │     m    │    ,    │   .   │    /   │
-		     &kp Z   &kp X   &kp C    &kp V     &kp B        &kp N     &kp M   &kp COMMA &kp DOT &kp FSLH
-		// └───────┴───────┴───────┼─────────┼─────────┤   ├───────┼──────────┼─────────┴───────┴────────┘
-		//                         │   tab   │  space  │   │ enter │   bksp   │                        
-		                            &lt 1 TAB &kp SPACE     &kp RET &lt 1 BSPC
-		//                         └─────────┴─────────┘   └───────┴──────────┘
+		// ┌───────┬───────┬───────┬─────────┬───────────┐   ┌─────────┬──────────┬─────────┬───────┬────────┐  
+		// │   q   │   w   │   e   │    r    │     t     │   │    y    │     u    │    i    │   o   │    p   │
+		     &kp Q   &kp W   &kp E    &kp R      &kp T          &kp Y     &kp U     &kp I    &kp O   &kp P
+		// ├───────┼───────┼───────┼─────────┼───────────┤   ├─────────┼──────────┼─────────┼───────┼────────┤ 
+		// │   a   │   s   │   d   │    f    │     g     │   │    h    │     j    │    k    │   l   │    ;   │
+		     &kp A   &kp S   &kp D    &kp F      &kp G          &kp H     &kp J     &kp K    &kp L  &kp SEMI
+		// ├───────┼───────┼───────┼─────────┼───────────┤   ├─────────┼──────────┼─────────┼───────┼────────┤ 
+		// │   z   │   x   │   c   │    v    │     b     │   │    n    │     m    │    ,    │   .   │    /   │
+		     &kp Z   &kp X   &kp C    &kp V      &kp B          &kp N     &kp M   &kp COMMA &kp DOT &kp FSLH
+		// └───────┴───────┴───────┼─────────┼───────────┤   ├─────────┼──────────┼─────────┴───────┴────────┘
+		//                         │   tab   │   space   │   │  enter  │   bksp   │                        
+		                            &lt 1 TAB &lt 3 SPACE     &lt 3 RET &lt 1 BSPC
+		//                         └─────────┴───────────┘   └─────────┴──────────┘
             >;
         };
 	
 	
-	// Layer 1 
-	num_pun_layer {
+	// First layer (Numbers and special characters)
+	num_special_characters_layer {
             bindings = <
 		// ┌──────┬─────────┬─────────┬─────────┬──────┐   ┌──────┬───────┬───────┬───────┬──────┐  
 		// │      │    `    │    -    │    =    │      │   │      │   7   │   8   │   9   │      │
-		    &trans &kp GRAVE &kp MINUS &kp EQUAL &trans     &trans  &kp N7  &kp N8  &kp N9 &trans
+		     &none &kp GRAVE &kp MINUS &kp EQUAL  &none     &none  &kp N7  &kp N8  &kp N9  &none
 		// ├──────┼─────────┼─────────┼─────────┼──────┤   ├──────┼───────┼───────┼───────┼──────┤ 
 		// │      │         │    '    │         │      │   │      │   4   │   5   │   6   │      │
-		    &trans   &trans   &kp SQT    &trans  &trans     &trans  &kp N4  &kp N5  &kp N6 &trans 
+		     &none   &none    &kp SQT    &none    &none     &none  &kp N4  &kp N5  &kp N6  &none 
 		// ├──────┼─────────┼─────────┼─────────┼──────┤   ├──────┼───────┼───────┼───────┼──────┤ 
 		// │      │    [    │    ]    │    \    │      │   │  0   │   1   │   2   │   3   │      │
-		    &trans &kp LBKT  &kp RBKT  &kp BSLH  &trans     &kp N0  &kp N1  &kp N2  &kp N3 &trans  
+		     &none  &kp LBKT  &kp RBKT  &kp BSLH  &none     &kp N0  &kp N1  &kp N2  &kp N3 &none  
 		// └──────┴─────────┴─────────┼─────────┼──────┤   ├──────┼───────┼───────┴───────┴──────┘
 		//                            │         │      │   │      │       │                        
-		                                &trans   &trans     &trans  &trans  
+		                                 &trans  &trans     &trans  &trans  
 		//                            └─────────┴──────┘   └──────┴───────┘
             >;
 	};
+
+	// Second layer (Function layer)
+	function_layer {
+            bindings = <
+		// ┌──────┬──────┬──────┬──────┬──────┐   ┌──────┬───────┬───────┬───────┬───────┐  
+		// │      │      │      │      │      │   │      │  F7   │  F8   │  F9   │  F12  │
+		    &none  &none  &none  &none  &none      &none  &kp F7  &kp F8  &kp F9  &kp F12 
+		// ├──────┼──────┼──────┼──────┼──────┤   ├──────┼───────┼───────┼───────┼───────┤ 
+		// │      │      │      │      │      │   │      │  F4   │  F5   │  F6   │  F11  │
+		    &none  &none  &none  &none  &none      &none  &kp F4  &kp F5  &kp F6  &kp F11 
+		// ├──────┼──────┼──────┼──────┼──────┤   ├──────┼───────┼───────┼───────┼───────┤ 
+		// │      │      │      │      │      │   │      │  F1   │  F2   │  F3   │  F10  │
+		    &none  &none  &none  &none  &none      &none  &kp F1  &kp F2  &kp F3  &kp F10  
+		// └──────┴──────┴──────┼──────┼──────┤   ├──────┼───────┼───────┴───────┴───────┘
+		//                      │      │      │   │      │       │                        
+		                         &trans &trans     &trans  &trans  
+		//                      └──────┴──────┘   └──────┴───────┘
+            >;
+	};
+
+	// Last layer (Utility layer)
+	utility_layer {
+            bindings = <
+		// ┌────────┬──────────────┬──────────────┬───────────────┬──────┐   ┌────────────┬──────────┬──────────┬──────────┬──────┐  
+		// │        │   LEFT CLK   │   MOUSE UP   │    RIGHT CLK  │      │   │   VOL UP   │          │     ⇑    │          │      
+		      &none     &mkp LCLK    &mmv MOVE_UP      &mkp RCLK   &none      &kp C_VOL_UP    &none    &kp UP       &none    &none
+		// ├────────┼──────────────┼──────────────┼───────────────┼──────┤   ├────────────┼──────────┼──────────┼──────────┼──────┤ 
+		// │  CAPS  │  MOUSE LEFT  │  MOUSE DOWN  │  MOUSE RIGHT  │      │   │    MUTE    │     ⇐    │     ⇓    │     ⇒    │      │
+		    &kp CAPS &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &none       &kp C_MUTE   &kp LEFT   &kp DOWN   &kp RIGHT  &none 
+		// ├────────┼──────────────┼──────────────┼───────────────┼──────┤   ├────────────┼──────────┼──────────┼──────────┼──────┤ 
+		// │        │              │              │               │      │   │  VOL DOWN  │ PREVIOUS │PLAY/PAUSE│   NEXT   │      │
+		     &none       &none           &none          &none      &none      &kp C_VOL_DN &kp C_PREV  &kp C_PP  &kp C_NEXT  &none  
+		// └────────┴──────────────┴──────────────┼───────────────┼──────┤   ├────────────┼──────────┼──────────┴──────────┴──────┘
+		//                                        │               │      │   │            │          │                        
+		                                               &trans      &trans        &trans       &trans  
+		//                                        └───────────────┴──────┘   └────────────┴──────────┘
+            >;
+	};
+
     };
 };
