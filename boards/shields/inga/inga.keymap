@@ -9,35 +9,9 @@
 #define KEYS_L 0 1 2 3 4 10 11 12 13 14 20 21 22 23 24 30 31
 #define KEYS_R 5 6 7 8 9 15 16 17 18 19 25 26 27 28 29 32 33
 #define KEYS_T 30 31 32 33
-#define HRML(k1, k2, k3, k4) &hrml LGUI k1  &hrml LALT k2  &hrml LSHFT k3 &hrml LCTRL k4
-#define HRMR(k1, k2, k3, k4) &hrmr RCTRL k1  &hrmr RSHFT k2  &hrmr RALT k3 &hrmr RGUI k4
+
 
 / {
-    behaviour {
-        hrml: home_row_mod_left {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "balanced";
-            require-prior-idle-ms = <120>;
-            tapping-term-ms = <150>;
-            quick-tap-ms = <300>;
-            bindings = <&kp>, <&kp>;
-            hold-trigger-key-positions = <KEYS_R KEYS_T>;
-            hold-trigger-on-release;
-        };
-        hrmr: home_row_mod_right {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "balanced";
-            require-prior-idle-ms = <120>;
-            tapping-term-ms = <150>;
-            quick-tap-ms = <300>;
-            bindings = <&kp>, <&kp>;
-            hold-trigger-key-positions = <KEYS_L KEYS_T>;
-            hold-trigger-on-release;
-        };
-    };
-
     combos {
         compatible = "zmk,combos";
 	combo_gui {
@@ -98,40 +72,39 @@
 	// Layer 0
         default_layer {
             bindings = <
-		// ┌───────┬───────┬───────┬───────┬───────┐   ┌───────┬───────┬───────┬───────┬───────┐  
-		// │   q   │   w   │   e   │   r   │   t   │   │   y   │   u   │   i   │   o   │   p   │
-		     &kp Q   &kp W   &kp E   &kp R   &kp T       &kp Y   &kp U   &kp I   &kp O   &kp P
-		// ├───────┼───────┼───────┼───────┼───────┤   ├───────┼───────┼───────┼───────┼───────┤ 
-		// │   a   │   s   │   d   │   f   │   g   │   │   h   │   j   │   k   │   l   │   ;   │
-		//  HRML(A,    S,      D,      F)    &kp G       &kp H  HRMR(J,    K,      L,   SEMI)
-		     &kp A   &kp S   &kp D   &kp F   &kp G       &kp H   &kp J   &kp K   &kp L &kp SEMI
-		// ├───────┼───────┼───────┼───────┼───────┤   ├───────┼───────┼───────┼───────┼───────┤ 
-		// │   z   │   x   │   c   │   v   │   b   │   │   n   │   m   │   ,   │   .   │   /   │
-		     &kp Z   &kp X   &kp C   &kp V   &kp B       &kp N   &kp M   &kp COMMA &kp DOT &kp FSLH
-		// └───────┴───────┴───────┼───────┼───────┤   ├───────┼───────┼───────┴───────┴───────┘
-		//                         │  tab  │ space │   │ enter │ bksp  │                        
-		                            &kp TAB &kp SPACE   &kp RET &kp BSPC
-		//                         └───────┴───────┘   └───────┴───────┘
+		// ┌───────┬───────┬───────┬─────────┬─────────┐   ┌───────┬──────────┬─────────┬───────┬────────┐  
+		// │   q   │   w   │   e   │    r    │    t    │   │   y   │     u    │    i    │   o   │    p   │
+		     &kp Q   &kp W   &kp E    &kp R     &kp T        &kp Y     &kp U     &kp I    &kp O   &kp P
+		// ├───────┼───────┼───────┼─────────┼─────────┤   ├───────┼──────────┼─────────┼───────┼────────┤ 
+		// │   a   │   s   │   d   │    f    │    g    │   │   h   │     j    │    k    │   l   │    ;   │
+		     &kp A   &kp S   &kp D    &kp F     &kp G        &kp H     &kp J     &kp K    &kp L  &kp SEMI
+		// ├───────┼───────┼───────┼─────────┼─────────┤   ├───────┼──────────┼─────────┼───────┼────────┤ 
+		// │   z   │   x   │   c   │    v    │    b    │   │   n   │     m    │    ,    │   .   │    /   │
+		     &kp Z   &kp X   &kp C    &kp V     &kp B        &kp N     &kp M   &kp COMMA &kp DOT &kp FSLH
+		// └───────┴───────┴───────┼─────────┼─────────┤   ├───────┼──────────┼─────────┴───────┴────────┘
+		//                         │   tab   │  space  │   │ enter │   bksp   │                        
+		                            &lt 1 TAB &kp SPACE     &kp RET &lt 1 BSPC
+		//                         └─────────┴─────────┘   └───────┴──────────┘
             >;
         };
 	
+	
 	// Layer 1 
-	num_layer {
+	num_pun_layer {
             bindings = <
-		// ┌───────┬───────┬───────┬───────┬───────┐   ┌───────┬───────┬───────┬───────┬───────┐  
-		// │   q   │   w   │   e   │   r   │   t   │   │   y   │   u   │   i   │   o   │   p   │
-		     &kp Q   &kp W   &kp E   &kp R   &kp T       &kp Y   &kp U   &kp I   &kp O   &kp P
-		// ├───────┼───────┼───────┼───────┼───────┤   ├───────┼───────┼───────┼───────┼───────┤ 
-		// │   a   │   s   │   d   │   f   │   g   │   │   h   │   j   │   k   │   l   │   ;   │
-		//  HRML(A,    S,      D,      F)    &kp G       &kp H  HRMR(J,    K,      L,   SEMI)
-		     &kp A   &kp S   &kp D   &kp F   &kp G       &kp H   &kp J   &kp K   &kp L &kp SEMI
-		// ├───────┼───────┼───────┼───────┼───────┤   ├───────┼───────┼───────┼───────┼───────┤ 
-		// │   z   │   x   │   c   │   v   │   b   │   │   n   │   m   │   ,   │   .   │   /   │
-		     &kp Z   &kp X   &kp C   &kp V   &kp B       &kp N   &kp M   &kp COMMA &kp DOT &kp FSLH
-		// └───────┴───────┴───────┼───────┼───────┤   ├───────┼───────┼───────┴───────┴───────┘
-		//                         │  tab  │ space │   │ enter │ bksp  │                        
-		                            &kp TAB &kp SPACE   &kp RET &kp BSPC
-		//                         └───────┴───────┘   └───────┴───────┘
+		// ┌──────┬─────────┬─────────┬─────────┬──────┐   ┌──────┬───────┬───────┬───────┬──────┐  
+		// │      │    `    │    -    │    =    │      │   │      │   7   │   8   │   9   │      │
+		    &trans &kp GRAVE &kp MINUS &kp EQUAL &trans     &trans  &kp N7  &kp N8  &kp N9 &trans
+		// ├──────┼─────────┼─────────┼─────────┼──────┤   ├──────┼───────┼───────┼───────┼──────┤ 
+		// │      │         │    '    │         │      │   │      │   4   │   5   │   6   │      │
+		    &trans   &trans   &kp SQT    &trans  &trans     &trans  &kp N4  &kp N5  &kp N6 &trans 
+		// ├──────┼─────────┼─────────┼─────────┼──────┤   ├──────┼───────┼───────┼───────┼──────┤ 
+		// │      │    [    │    ]    │    \    │      │   │  0   │   1   │   2   │   3   │      │
+		    &trans &kp LBKT  &kp RBKT  &kp BSLH  &trans     &kp N0  &kp N1  &kp N2  &kp N3 &trans  
+		// └──────┴─────────┴─────────┼─────────┼──────┤   ├──────┼───────┼───────┴───────┴──────┘
+		//                            │         │      │   │      │       │                        
+		                                &trans   &trans     &trans  &trans  
+		//                            └─────────┴──────┘   └──────┴───────┘
             >;
 	};
     };
